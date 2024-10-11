@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import sys
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -157,29 +158,16 @@ LOGGING = {
             "style": "{",
         },
     },
-    "handlers": {
-        "file": {
-            "level": "ERROR",
-            "class": "logging.FileHandler",
-            "filename": logs_directory / "backend.log",
-            "formatter": "verbose",
-        },
-        "console": {
-            "level": "DEBUG",
-            "class": "logging.StreamHandler",
-            "formatter": "simple",
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'stream': sys.stdout,
         },
     },
     "loggers": {
-        "django": {
-            "handlers": ["file", "console"],
-            "level": "ERROR",
-            "propagate": True,
-        },
-        "django.request": {
-            "handlers": ["file"],
-            "level": "ERROR",
-            "propagate": False,
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
         },
     },
 }
