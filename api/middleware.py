@@ -11,8 +11,9 @@ class ChatIDMiddleware:
             try:
                 request.user = User.objects.get(chat_id=chat_id)
             except User.DoesNotExist:
-                if not request.user.is_superuser:
-                    return JsonResponse({"message": "User not found"}, status=404)
+                # if not request.user.is_superuser:
+                #     return JsonResponse({"message": "User not found"}, status=404)
+                ...
                 
                 
         return self.get_response(request)
