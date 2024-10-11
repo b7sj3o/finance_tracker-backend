@@ -20,14 +20,14 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Create logs directory if it doesn't exist
-logs_directory = BASE_DIR.parent / "logs"
-if not logs_directory.exists():
-    logs_directory.mkdir(parents=True)
+# logs_directory = BASE_DIR.parent / "logs"
+# if not logs_directory.exists():
+#     logs_directory.mkdir(parents=True)
 
-# Create reports directory if it doesn't exist
-reports_directory = BASE_DIR.parent / "reports"
-if not reports_directory.exists():
-    reports_directory.mkdir(parents=True)
+# # Create reports directory if it doesn't exist
+# reports_directory = BASE_DIR.parent / "reports"
+# if not reports_directory.exists():
+#     reports_directory.mkdir(parents=True)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
