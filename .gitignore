@@ -1,0 +1,15 @@
+*.env
+*venv*
+*.idea*
+*pycache*
+
+*.db*
+*.sqlite3
+
+*key.pem
+*cert.pem
+*.log
+
+*logs*
+*reports*
+*coverage*
