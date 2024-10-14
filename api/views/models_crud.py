@@ -11,10 +11,7 @@ from ..serializers import (
     IncomeSerializer,
     CategorySerializer,
 )
-from ..mixins import (
-    ContentTypeValidationMixin,
-    UserFilteredMixin
-)
+from ..mixins import ContentTypeValidationMixin, UserFilteredMixin
 
 
 class BaseCRUDView(
@@ -99,7 +96,7 @@ class IncomeView(BaseCRUDView):
 class CategoryView(BaseCRUDView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    
+
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)

@@ -4,17 +4,20 @@ from django.core.validators import MinValueValidator
 from decimal import Decimal
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, chat_id, password, **extra_fields):
-        if not chat_id:
-            raise ValueError("The Chat ID must be provided")
-        user = self.model(username=username, chat_id=chat_id, **extra_fields)
+    def create_user(self, username, first_name, last_name, password=None):
+        if not username:
+            raise ValueError("Users must have a username")
+        user = self.model(
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+        )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
     def create_superuser(self, username, email=None, password=None):
         user = self.model(username=username)
-        user.is_staff = True
         user.is_superuser = True
         user.set_password(password)
         user.save(using=self._db)
@@ -23,11 +26,12 @@ class UserManager(BaseUserManager):
 
 class User(AbstractUser):
     username = models.CharField(max_length=50, unique=True)
-    chat_id = models.CharField(max_length=300, unique=True, null=True, blank=True)
+    first_name = models.CharField(max_length=50, blank=True, null=True)
+    last_name = models.CharField(max_length=50, blank=True, null=True)
+    chat_id = models.CharField(max_length=300, unique=True)
     balance = models.FloatField(default=0)
 
     is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
 
     objects = UserManager()
 

@@ -3,10 +3,7 @@ from .models_crud import (
     IncomeView,
     CategoryView,
 )
-from .user import (
-    UserCreateView,
-    GetUserView
-)
+from .user import GetUserView, TelegramRegisterView
 from .utils import (
     GenerateCSVReportView,
     GenerateExcelReportView,
@@ -15,5 +12,3 @@ from .utils import (
     MonthlyExpensesView,
     MonthlyIncomesView,
 )
-
-
